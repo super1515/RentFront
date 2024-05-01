@@ -1,15 +1,23 @@
-FROM node:12.16.1-alpine As builder
+# Use the official Node.js base image
+FROM node:10
 
-WORKDIR /usr/src/app
+# Set the working directory in the container
+WORKDIR /app
 
-COPY package.json package-lock.json ./
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy the rest of the application files to the working directory
 COPY . .
 
+# Build the Angular app
 RUN npm run build --prod
 
-FROM nginx:1.15.8-alpine
+# Expose the default Angular port
+EXPOSE 4200
 
-COPY --from=builder /usr/src/app/dist/SampleApp/ /usr/share/nginx/html
+# Start the Angular app when the container starts
+CMD ["npm", "start"]
