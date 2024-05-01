@@ -1,0 +1,55 @@
+<div class=" h-screen flex items-center justify-center max-w-lg container mx-auto" *ngIf="!isLogin">
+    <div>
+        <div class="py-2 px-12 flex rounded-lg items-center mb-4">
+            <h1 class="mb-2 text-4xl flex-auto text-center font-bold">ManagRent</h1>
+        </div>
+        @for (item of infoMessages; track item) {
+            <li>{{ item }}</li>
+        }
+        <div class="py-1 px-6 flex border rounded-lg items-center mb-1 bg-neutral-300 text-white">
+            <input name="name" [(ngModel)]="register.name" class="mb-2 text-lg flex-auto text-left bg-transparent outline outline-0 placeholder-white" placeholder="Имя">
+        </div>
+        <div class="py-1 px-6 flex border rounded-lg items-center mb-1 bg-neutral-300 text-white">
+            <input name="surname" [(ngModel)]="register.surname" class="mb-2 text-lg flex-auto text-left bg-transparent outline outline-0 placeholder-white" placeholder="Фамилия">
+        </div>
+        <div class="py-1 px-6 flex border rounded-lg items-center mb-1 bg-neutral-300 text-white">
+            <input name="mail" [(ngModel)]="register.mail" class="mb-2 text-lg flex-auto text-left bg-transparent outline outline-0 placeholder-white" placeholder="Почта">
+        </div>
+        <div class="py-1 px-6 flex border rounded-lg items-center mb-1 bg-neutral-300 text-white">
+            <input name="password" [(ngModel)]="register.password" class="mb-2 text-lg flex-auto text-left bg-transparent outline outline-0 placeholder-white" placeholder="Пароль">
+        </div>
+        <div class="py-1 px-6 flex border rounded-lg items-center mb-1 bg-neutral-300 text-white">
+            <input name="passwordConfirm" [(ngModel)]="register.passwordConfirm" class="mb-2 text-lg flex-auto text-left bg-transparent outline outline-0 placeholder-white" placeholder="Подтверждение пароля">
+        </div>
+        <div class="py-1 px-6 flex border rounded-lg items-center bg-black text-white" [ngClass]="{'opacity-50 pointer-events-none cursor-not-allowed': isWaiting}">
+            <button class="mb-2 text-lg flex-auto text-center" (click)="registerUser()">Зарегистрироваться</button>
+        </div>
+        <div class="py-2 px-12 flex rounded-lg items-center mb-5">
+            <button class="mb-2 text-1xl flex-auto text-center" (click)="isLogin=true; infoMessages = []">Есть аккаунт? Вход</button>
+        </div>
+    </div>
+</div>
+
+<div class=" h-screen flex items-center justify-center max-w-lg container mx-auto" *ngIf="isLogin">
+    <div>
+        
+        <div class="py-2 px-12 flex rounded-lg items-center mb-4">
+            <h1 class="mb-2 text-4xl flex-auto text-center font-bold">ManagRent</h1>
+        </div>
+        @for (item of infoMessages; track item) {
+            <li>{{ item }}</li>
+        }
+        <div class="py-1 px-6 flex border rounded-lg items-center mb-1 bg-neutral-300 text-white">
+            <input name="mail" [(ngModel)]="login.mail" class="mb-2 text-lg flex-auto text-left bg-transparent outline outline-0 placeholder-white" placeholder="Почта">
+        </div>
+        <div class="py-1 px-6 flex border rounded-lg items-center mb-1 bg-neutral-300 text-white">
+            <input name="password" [(ngModel)]="login.password" class="mb-2 text-lg flex-auto text-left bg-transparent outline outline-0 placeholder-white" placeholder="Пароль">
+        </div>
+        <div class="py-1 px-6 flex border rounded-lg items-center bg-black text-white" [ngClass]="{'opacity-50 pointer-events-none cursor-not-allowed': isWaiting}">
+            <button class="mb-2 text-lg flex-auto text-center" (click)="loginUser()">Войти</button>
+        </div>
+        <div class="py-2 px-12 flex rounded-lg items-center mb-5">
+            <button class="mb-2 text-1xl flex-auto text-center" (click)="isLogin=false; infoMessages = []" >Нет аккаунта? Регистрация</button>
+        </div>
+    </div>
+</div>

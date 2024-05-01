@@ -1,0 +1,18 @@
+<style>
+    .router-link-active {
+      font-weight: 700;
+      border-bottom: 3px solid black;
+      padding-bottom: 2px;
+    }
+  </style>
+  
+  <div class="max-w-7xl container mx-auto pt-5">
+    <nav class="flex items-center space-x-1">
+      <a class="px-1 py-2 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none" routerLink="/object" routerLinkActive="router-link-active">Объекты</a>
+      <a class="px-1 py-2 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none">Клиенты</a>
+      <a class="px-1 py-2 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none">Договоры</a>
+      <a class="px-1 py-2 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none">Статистика</a>
+      <a class="px-1 py-2 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none" routerLink="/lk" routerLinkActive="router-link-active">Личный кабинет</a>
+      <button class="ml-auto" (click)="logout()"><img src="assets/logout.png" class="object-scale-down h-6 w-12"></button>
+    </nav>
+  </div>
