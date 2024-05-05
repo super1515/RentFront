@@ -10,14 +10,18 @@ import { AuthComponent } from './components/auth/auth.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LkComponent } from './components/lk/lk.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ObjectListComponent } from './components/objectList/objectList.component';
+import { ObjectEditComponent } from './components/objectEdit/objectEdit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ObjectComponent,
+    ObjectListComponent,
     AuthComponent,
     LkComponent,
     LoadingComponent,
+    ObjectEditComponent,
     NavComponent
   ],
   imports: [

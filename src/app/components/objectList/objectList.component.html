@@ -1,0 +1,65 @@
+<div class="max-w-7xl container mx-auto">
+
+    <div class="mt-8 mb-2 items-center">
+        
+        <div>
+            @for (parent of objects; track parent) {
+            @if (!parent.hasOwnProperty("ParentObjectID")) {
+            <div class="py-2 px-12 flex border rounded-lg mt-2 items-center bg-black text-white">
+                <img src="assets/folder.png" class="object-scale-down h-6 w-12">
+                <h2 class="mb-2 text-lg flex-auto text-left"> {{parent._id}} {{parent.Name}}</h2>
+                <button (click)="editObject(parent._id)"><img src="assets/pan.png" class="object-scale-down h-6 w-12"></button>
+                <button (click)="deleteObject(parent._id)"><img src="assets/del.png" class="object-scale-down h-6 w-6 ml-auto"></button>
+            </div>
+            
+            @for (child of objects; track child) {
+            @if (child.hasOwnProperty("ParentObjectID") && child.ParentObjectID === parent._id) {
+            <div class="py-2 px-12 flex border rounded-lg items-center mb-2 bg-black text-white" style="max-width: 95%; margin: 0 auto">
+                <img src="assets/folder.png" class="object-scale-down h-6 w-12">
+                <h2 class="mb-2 text-lg flex-auto text-left">{{child._id}} {{child.Name}}</h2>
+                <button (click)="editObject(child._id)"><img src="assets/pan.png" class="object-scale-down h-6 w-12"></button>
+                <button (click)="deleteObject(child._id)"><img src="assets/del.png" class="object-scale-down h-6 w-6 ml-auto"></button>
+            </div>
+            }
+            }
+            
+            <div class="py-2 px-12 flex border rounded-lg items-center mb-2 border-dashed border-black border-2" (click)="selectedObjectID = parent._id; showAddObjectModalWindow = true;" style="max-width: 95%; margin: 0 auto">
+                <button class="mb-1 text-lg flex-auto text-center">	&#43; Добавить объект</button>
+            </div>
+        }
+        }
+        </div>
+        
+        <div class="py-2 px-12 flex border rounded-lg items-center mt-2 border-dashed border-black border-2" (click)="selectedObjectID = ''; showAddObjectModalWindow = true;">
+            <button class="mb-1 text-lg flex-auto text-center">	&#43; Добавить группу</button>
+        </div>
+    </div>
+    </div>
+    
+    
+    <div id="add-object-modal" tabindex="-1" class="fixed top-0 right-0 bottom-0 left-0 z-50 flex justify-center items-center bg-gray-900 bg-opacity-50" *ngIf="showAddObjectModalWindow">
+        <div class="bg-white rounded-lg w-full max-w-md">
+            <div class="p-4">
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-xl font-semibold text-gray-900">
+                        Добавить объект
+                    </h3>
+                    <button type="button" (click)="showAddObjectModalWindow = false;" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only" >Close modal</span>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <form class="space-y-4" action="#">
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Название</label>
+                            <input name="objName" [(ngModel)]="newObjectName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder='Имя объекта' required />
+                        </div>
+                        <button class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" (click)="addObject(); showAddObjectModalWindow = false;">Добавить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
