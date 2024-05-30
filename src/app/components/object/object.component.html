@@ -1,2 +1,2 @@
-<app-objectEdit [object]=selectedObject *ngIf="isObjectEdit"></app-objectEdit>
+<app-objectEdit [object]=selectedObject [objects]=objects *ngIf="isObjectEdit"></app-objectEdit>
 <app-objectList *ngIf="!isObjectEdit" (onObjectEdit)="onObjectEdit($event)"></app-objectList>

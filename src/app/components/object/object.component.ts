@@ -12,6 +12,7 @@ export class ObjectComponent {
     token = ""
     selectedOrganization = ""
     selectedObject: IObject
+    objects: IObject[]
     isObjectEdit = false
     constructor(private objectsService: ObjectsService){
         this.token = localStorage.getItem('token') ?? ''
@@ -20,9 +21,12 @@ export class ObjectComponent {
     ngOnInit(): void {
 
     }
-    onObjectEdit(selectedObject: IObject){
+    onObjectEdit(obj:{object: IObject, objects: IObject[]}){
+        //object: IObject, objects: IObject[]
+        obj.object
         this.isObjectEdit = true
-        this.selectedObject = selectedObject
-        console.log(selectedObject)
+        this.selectedObject = obj.object
+        this.objects = obj.objects
+        console.log(obj.objects)
     }
 }

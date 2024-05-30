@@ -12,6 +12,8 @@ import { LkComponent } from './components/lk/lk.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ObjectListComponent } from './components/objectList/objectList.component';
 import { ObjectEditComponent } from './components/objectEdit/objectEdit.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,11 @@ import { ObjectEditComponent } from './components/objectEdit/objectEdit.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule,
+    BrowserModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [
     provideClientHydration()

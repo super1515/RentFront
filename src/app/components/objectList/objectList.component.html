@@ -7,16 +7,16 @@
             @if (!parent.hasOwnProperty("ParentObjectID")) {
             <div class="py-2 px-12 flex border rounded-lg mt-2 items-center bg-black text-white">
                 <img src="assets/folder.png" class="object-scale-down h-6 w-12">
-                <h2 class="mb-2 text-lg flex-auto text-left"> {{parent._id}} {{parent.Name}}</h2>
+                <h2 class="mb-2 text-lg flex-auto text-left"> {{" " || parent._id}} {{parent.Name}}</h2>
                 <button (click)="editObject(parent._id)"><img src="assets/pan.png" class="object-scale-down h-6 w-12"></button>
                 <button (click)="deleteObject(parent._id)"><img src="assets/del.png" class="object-scale-down h-6 w-6 ml-auto"></button>
             </div>
             
             @for (child of objects; track child) {
             @if (child.hasOwnProperty("ParentObjectID") && child.ParentObjectID === parent._id) {
-            <div class="py-2 px-12 flex border rounded-lg items-center mb-2 bg-black text-white" style="max-width: 95%; margin: 0 auto">
+            <div class="py-2 px-12 flex border rounded-lg items-center mb-2 bg-blue-900 text-white" style="max-width: 95%; margin: 0 auto">
                 <img src="assets/folder.png" class="object-scale-down h-6 w-12">
-                <h2 class="mb-2 text-lg flex-auto text-left">{{child._id}} {{child.Name}}</h2>
+                <h2 class="mb-2 text-lg flex-auto text-left">{{" " || child._id}} {{child.Name}}</h2>
                 <button (click)="editObject(child._id)"><img src="assets/pan.png" class="object-scale-down h-6 w-12"></button>
                 <button (click)="deleteObject(child._id)"><img src="assets/del.png" class="object-scale-down h-6 w-6 ml-auto"></button>
             </div>

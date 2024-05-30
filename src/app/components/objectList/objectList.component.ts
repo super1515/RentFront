@@ -14,7 +14,7 @@ export class ObjectListComponent {
     objects:IObject[] = []
     selectedObjectID = ""
     newObjectName = ""
-    @Output() onObjectEdit = new EventEmitter<IObject>();
+    @Output() onObjectEdit = new EventEmitter<{object: IObject, objects: IObject[]}>();
     constructor(private objectsService: ObjectsService){
         this.token = localStorage.getItem('token') ?? ''
         this.selectedOrganization = localStorage.getItem('selectedOrganization') ?? ''
@@ -75,6 +75,6 @@ export class ObjectListComponent {
             Name: "null",
             ParentObjectID: "null"
             };
-        this.onObjectEdit.emit(this.objects.find(elem => elem._id=== selected) ?? newObject);
+        this.onObjectEdit.emit({object:this.objects.find(elem => elem._id === selected) ?? newObject, objects:this.objects});
     }
 }
